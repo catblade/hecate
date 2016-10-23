@@ -89,10 +89,9 @@ func handleAllErrors(err error, responseWriter http.ResponseWriter, status int, 
 			for i := 0; i < length; i++ {
 				f := runtime.FuncForPC(fpcs[i])
 				file, line := f.FileLine(fpcs[i])
-				temp := fmt.Sprintf("%s:%d %s\n", file, line, f.Name())
+				temp := fmt.Sprintf("%d %s:%d %s\n", i, file, line, f.Name())
 				log.Printf("%s", temp)
 				frames[i] = &temp
-				i++
 			}
 		}
 
